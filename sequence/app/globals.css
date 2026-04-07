@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ─── */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #e5e5e5;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(232, 115, 74, 0.4); border-radius: 2px; }
+* { scrollbar-width: thin; scrollbar-color: rgba(232, 115, 74, 0.4) transparent; }
+
+::selection {
+  background: rgba(232, 115, 74, 0.3);
+  color: #fff;
+}
+
+@layer components {
+
+  /* ─── Floating Glass — ultra-transparent, just enough to read ─── */
+  .glass-panel {
+    background: rgba(10, 10, 10, 0.3);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  /* ─── Inner card — barely visible ─── */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(232, 115, 74, 0.15);
+  }
+
+  /* ─── Nav ─── */
+  .glass-nav {
+    background: rgba(10, 10, 10, 0.35);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  /* ─── Typography ─── */
+  .section-title {
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #e8734a 0%, #f5a07a 50%, #e8734a 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s ease-in-out infinite;
+    filter: drop-shadow(0 2px 8px rgba(232, 115, 74, 0.3));
+  }
+
+  /* ─── Text glow for readability without boxes ─── */
+  .text-glow {
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.4);
+  }
+
+  /* ─── Buttons ─── */
+  .glow-btn {
+    position: relative;
+    background: linear-gradient(135deg, #e8734a, #c55a35);
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(232, 115, 74, 0.25);
+  }
+
+  .glow-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(232, 115, 74, 0.4);
+  }
+
+  .outline-btn {
+    border: 1px solid rgba(232, 115, 74, 0.4);
+    color: #e8734a;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    transition: all 0.3s ease;
+    background: rgba(10, 10, 10, 0.3);
+  }
+
+  .outline-btn:hover {
+    background: rgba(232, 115, 74, 0.1);
+    border-color: #e8734a;
+  }
+
+  /* ─── Skill tags — tiny, elegant ─── */
+  .skill-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.6rem;
+    font-weight: 500;
+    background: rgba(232, 115, 74, 0.08);
+    color: #f09070;
+    border: 1px solid rgba(232, 115, 74, 0.1);
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── Section number ─── */
+  .section-number {
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    color: #e8734a;
+    font-weight: 600;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    text-shadow: 0 0 15px rgba(232, 115, 74, 0.4);
+  }
+}
+
+/* ─── Keyframes ─── */
+@keyframes shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  30% { transform: translate(7%, -25%); }
+  50% { transform: translate(-15%, 10%); }
+  70% { transform: translate(0%, 15%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  animation: grain 8s steps(10) infinite;
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
