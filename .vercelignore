@@ -1,0 +1,10 @@
+.git
+.github
+Portfolio_Guide.pdf
+README.md
+node_modules
+.next
+*.log
+.DS_Store
+.env.local
+.env.*.local

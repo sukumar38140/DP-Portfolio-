@@ -1,0 +1,9 @@
+{
+  "buildCommand": "npm install --prefix sequence && npm run build --prefix sequence",
+  "outputDirectory": "sequence/.next",
+  "publicSource": "sequence/public",
+  "installCommand": "npm install --prefix sequence",
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": "@next_public_site_url"
+  }
+}
